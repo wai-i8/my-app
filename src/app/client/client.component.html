@@ -1,0 +1,101 @@
+<div id="search-component">
+    <label for="search-box">Client Search</label>
+    <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+  
+    <!--<ul class="search-result">
+      <li *ngFor="let hero of heroes$ | async" >
+        <a routerLink="/detail/{{hero.id}}">
+          {{hero.name}}
+        </a>
+      </li>
+    </ul>-->
+  </div>
+
+<table width="100%">
+    <tr *ngFor = "let data of getdataService.slClient;let firstRecord = first;">
+        <th *ngIf=firstRecord>
+            {{data.ticket}}
+        </th>
+        <th *ngIf=firstRecord>
+            {{data.login}}
+        </th>
+        <th *ngIf=firstRecord>
+            {{data.cmd}}
+        </th>
+        <th *ngIf=firstRecord>
+            {{data.symbol}}
+        </th>
+        <th *ngIf=firstRecord>
+            {{data.open_time}}
+        </th>
+        <th *ngIf=firstRecord>
+            {{data.open_price}}
+        </th>
+        <th *ngIf=firstRecord>
+            {{data.tp}}
+        </th>
+        <th *ngIf=firstRecord>
+            {{data.sl}}
+        </th>
+        <th *ngIf=firstRecord>
+            {{data.close_time}}
+        </th>
+        <th *ngIf=firstRecord>
+            {{data.close_price}}
+        </th>
+        <th *ngIf=firstRecord>
+            {{data.swaps}}
+        </th>
+        <th *ngIf=firstRecord>
+            {{data.commission}}
+        </th>
+        <th *ngIf=firstRecord>
+            {{data.profit}}
+        </th>
+        <th *ngIf=firstRecord>
+            {{data.comment}}
+        </th>
+        <td *ngIf=!firstRecord>
+            {{data.ticket}}
+        </td>
+        <td *ngIf=!firstRecord>
+            {{data.login}}
+        </td>
+        <td *ngIf=!firstRecord>
+            {{data.cmd}}
+        </td>
+        <td *ngIf=!firstRecord>
+            {{data.symbol}}
+        </td>
+        <td *ngIf=!firstRecord>
+            {{data.open_time}}
+        </td>
+        <td *ngIf=!firstRecord>
+            {{data.open_price | number: '0.2'}}
+        </td>
+        <td *ngIf=!firstRecord>
+            {{data.tp}}
+        </td>
+        <td *ngIf=!firstRecord>
+            {{data.sl}}
+        </td>
+        <td *ngIf=!firstRecord>
+            {{data.close_time}}
+        </td>
+        <td *ngIf=!firstRecord>
+            {{data.close_price}}
+        </td>
+        <td *ngIf=!firstRecord>
+            {{data.swaps}}
+        </td>
+        <td *ngIf=!firstRecord>
+            {{data.commission}}
+        </td>
+        <td *ngIf=!firstRecord>
+            {{data.profit}}
+        </td>
+        <td *ngIf=!firstRecord>
+            {{data.comment}}
+        </td>
+    </tr>
+</table>

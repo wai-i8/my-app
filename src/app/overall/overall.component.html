@@ -1,0 +1,26 @@
+<table width="100%" *ngFor = "let data of getdataService.slData">
+    <tr>
+        <th>{{data.name}}</th>
+    </tr>
+    <tr>
+        <td>
+            {{data.value| number:'0.2'}}
+        </td>
+    </tr>
+</table>
+<table width="100%">
+    <tr *ngFor = "let data of getdataService.slPosition;let firstRecord = first;">
+        <th *ngIf=firstRecord>
+            {{data.name}}
+        </th>
+        <th *ngIf=firstRecord>
+            {{data.value}}
+        </th>
+        <td *ngIf=!firstRecord>
+            {{data.name}}
+        </td>
+        <td *ngIf=!firstRecord>
+            {{data.value| number:'0.2'}}
+        </td>
+    </tr>
+</table>
