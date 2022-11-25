@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { debounceTime, distinctUntilChanged, filter, Subject, switchMap, tap } from 'rxjs';
+import { debounceTime, delay, distinctUntilChanged, filter, of, Subject, switchMap, tap } from 'rxjs';
 import { GetdataService } from '../getdata.service';
 
 @Component({
@@ -9,6 +9,7 @@ import { GetdataService } from '../getdata.service';
 })
 export class ClientComponent implements OnInit {
   private source$ = new Subject();
+  login = ""
 
   constructor(public getdataService: GetdataService) { }
 
@@ -17,13 +18,16 @@ export class ClientComponent implements OnInit {
       tap(data => console.log("haha: " + data)),
       debounceTime(300),
       distinctUntilChanged(),
-      filter((data:any) => data.length >=5),
-    ).subscribe((data:any) => this.getdataService.getClient(data));
+      filter((data:any) => data.length >=4),
+    ).subscribe((data:any) => {this.getdataService.getClient(data);
+                              of(null).pipe(delay(3000)).subscribe(() => this.login = "")});
   }
 
   search(login: string){
     this.source$.next(login);
+    this.login = login;
     this.source$.subscribe(x => console.log("X is: " + x));
+    
   }
 
 }
